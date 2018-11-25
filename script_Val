@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while IFS=, read -r col1 col2
+do
+for ( c=1; c<=40000; c++ ) in 'find train-images -name $col1';
+do 
+mkdir -p ~/data/valid/${col2} && cp -v -n ~/training-data/train-images/${col1}  ~/data/valid/${col2};
+done
+     
+done < train.csv
